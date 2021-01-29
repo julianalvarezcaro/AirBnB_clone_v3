@@ -65,6 +65,7 @@ def post_place(city_id):
         abort(404)
     if 'name' not in got_json:
         return make_response(jsonify({"error": "Missing name"}), 400)
+
     new_place = Place(**got_json)
     storage.new(new_place)
     new_place.city_id = city.id
